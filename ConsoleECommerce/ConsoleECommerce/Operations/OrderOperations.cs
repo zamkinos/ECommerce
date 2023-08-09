@@ -5,18 +5,27 @@ namespace ConsoleECommerce.Operations
 {
     internal class OrderOperations
     {
-        internal GetOrdersResponse GetOrders(string dt)
+        public async Task<GetOrdersResponse> GetOrdersAsync(string dt)
         {
-            string p = null;
-            BasicResponse res = ApiOperations.SendRequestWithBearerToken("fulfillment/v1/order?filter=creationdate:%5B" + dt + "Z..%5D", p);
-            if (res.HasError)
+            try
             {
-                // Log the error later
-                return new GetOrdersResponse();
+                string p = null;
+                BasicResponse res = await ApiOperations.SendRequestWithBearerTokenAsync("fulfillment/v1/order?filter=creationdate:%5B" + dt + "Z..%5D", p);
+
+                if (res.HasError)
+                {
+                    // Log the error later
+                    return new GetOrdersResponse();
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<GetOrdersResponse>(res.JsonResult);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return JsonConvert.DeserializeObject<GetOrdersResponse>(res.JsonResult);
+                Console.WriteLine($"Error in GetOrdersAsync: {ex}");
+                return new GetOrdersResponse();
             }
         }
     }

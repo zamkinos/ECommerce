@@ -4,9 +4,10 @@
     {
         public static string OAuthUserToken = "";
 
-        public const string DEV_ID = "7ee7c8e8-b874-48fc-8437-2e1cde7ef9fb";
-        public const string ePP_ID = "Zamkinos-BsgAppli-PRD-9091f4dec-5fe23d50";
-        public const string CERT_ID = "PRD-091f4decb55c-970e-4e0f-9601-921f";
-        public const string API_MAIN_URL = "https://api.ebay.com/sell/";
+        public const string APP_ID = "Zamkinos-BsgAppli-PRD-9091f4dec-5fa23d50"; // (Client ID)
+        public const string DEV_ID = "7aa7c8e8-b874-48fc-8437-2a1cda7af9fb";
+        public const string CERT_ID = "PRD-1b3fab5b77c8-0dce-46c3-9bf9-5429"; // (Client Secret)
+        public const string API_MAIN_URL = "https://api.ebay.com/sell/"; 
+        public const string API_TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token"; 
     }
 }
